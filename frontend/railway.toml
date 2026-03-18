@@ -8,13 +8,3 @@ healthcheckPath = "/"
 healthcheckTimeout = 30
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3
-```
-
----
-
-## Also Add a .npmrc File to Disable the Cache
-
-Create `frontend/.npmrc`:
-```
-cache=false
-prefer-offline=false
