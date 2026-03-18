@@ -1,18 +1,20 @@
-const express = require("express");
-const path    = require("path");
-const app     = express();
+import express from "express";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const app = express();
 const PORT = process.env.PORT || 3000;
-const DIST = path.join(__dirname, "dist");
+const DIST = join(__dirname, "dist");
 
-// Serve static assets
 app.use(express.static(DIST));
 
-// All routes fall back to index.html (React Router support)
 app.get("*", (req, res) => {
-  res.sendFile(path.join(DIST, "index.html"));
+  res.sendFile(join(DIST, "index.html"));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Frontend running on port ${PORT}`);
 });
